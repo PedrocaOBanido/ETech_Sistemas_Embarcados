@@ -21,5 +21,10 @@ void loop() {
     // descobrir pq isso não tá parando
     piscaPisca();
   }
+  while (true)
+  {
+    /* code */
+  }
+  
   
 }
