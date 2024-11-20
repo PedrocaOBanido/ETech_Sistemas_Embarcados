@@ -1,19 +1,32 @@
 #include <Arduino.h>
 #include <ArduinoJson.h>
 
-// put function declarations here:
-int myFunction(int, int);
+JsonDocument doc;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  //
+  if (Serial.available() > 0)
+  {
+    String msg = Serial.readStringUntil('\n');
+    //
+    DeserializationError error = deserializeJson(doc, msg);
+    if (!error)
+    {
+      bool led_state = doc["LED_RETURN"];
+      digitalWrite(LED_BUILTIN, led_state);
+      doc.clear();
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+      doc["LED_RETURN"] = "OK";
+
+      String saida;
+      serializeJson(doc, saida);
+      Serial.println(saida);
+    }
+  }
+  
 }
