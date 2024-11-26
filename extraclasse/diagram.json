@@ -1,0 +1,62 @@
+{
+    "version": 1,
+    "author": "PedrocaOBanido",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "board-esp32-c3-devkitm-1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": 14.4,
+        "left": -77.35,
+        "rotate": 90,
+        "attrs": { "value": "220" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r2",
+        "top": 72,
+        "left": -144.55,
+        "rotate": 90,
+        "attrs": { "value": "220" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r3",
+        "top": 14.4,
+        "left": -106.15,
+        "rotate": 90,
+        "attrs": { "value": "220" }
+      },
+      { "type": "wokwi-rgb-led", "id": "rgb1", "top": -120.8, "left": -123.7, "attrs": {} },
+      { "type": "wokwi-dip-switch-8", "id": "sw1", "top": 83.1, "left": 174.3, "attrs": {} }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "r3:1", "rgb1:G", "green", [ "h0" ] ],
+      [ "r1:1", "rgb1:B", "blue", [ "v-38.4", "h-40" ] ],
+      [ "r2:1", "rgb1:R", "red", [ "h0" ] ],
+      [ "r2:2", "esp:1", "red", [ "h0" ] ],
+      [ "r3:2", "esp:3", "green", [ "h0", "v8.4" ] ],
+      [ "r1:2", "esp:2", "blue", [ "h0" ] ],
+      [ "esp:GND.3", "rgb1:COM", "black", [ "h0" ] ],
+      [ "sw1:8a", "esp:GND.6", "green", [ "v19.2", "h-157" ] ],
+      [ "sw1:7a", "esp:GND.6", "green", [ "v28.8" ] ],
+      [ "sw1:6a", "esp:GND.6", "green", [ "v19.2" ] ],
+      [ "sw1:5a", "esp:GND.6", "green", [ "v19.2", "h-9.6" ] ],
+      [ "sw1:4a", "esp:GND.6", "green", [ "v19.2" ] ],
+      [ "sw1:3a", "esp:GND.6", "green", [ "v0" ] ],
+      [ "sw1:2a", "esp:GND.6", "green", [ "v0" ] ],
+      [ "sw1:1a", "esp:GND.6", "green", [ "v0" ] ],
+      [ "esp:19", "sw1:1b", "green", [ "h80.2", "v-57.9" ] ],
+      [ "esp:18", "sw1:2b", "green", [ "v-0.3", "h70.6", "v-57.6", "h28.8" ] ],
+      [ "esp:4", "sw1:3b", "green", [ "v-0.3", "h61", "v-48", "h48" ] ],
+      [ "esp:5", "sw1:4b", "green", [ "h51.4", "v-48.3", "h67.2" ] ],
+      [ "esp:6", "sw1:5b", "green", [ "h41.8", "v-48.3", "h86.4" ] ],
+      [ "esp:7", "sw1:6b", "green", [ "h32.2", "v-48.3", "h9.6" ] ],
+      [ "esp:8", "sw1:7b", "green", [ "h22.6", "v-38.7", "h134.4" ] ],
+      [ "esp:9", "sw1:8b", "green", [ "h13", "v-38.7", "h144" ] ]
+    ],
+    "dependencies": {}
+  }
