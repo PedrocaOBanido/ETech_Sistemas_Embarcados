@@ -9,6 +9,7 @@ void setup() {
   {
     Serial.print(" ☆*: .｡. o(≧▽≦)o .｡.:*☆ ");
   }
+  Serial.println();
   Serial.println("Conectado!");
   Serial.println(WiFi.localIP());
 }
